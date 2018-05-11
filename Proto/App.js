@@ -1,9 +1,9 @@
+import React from 'react';
+import { View, Text, FlatList} from 'react-native';
+import { List, ListItems, Card, Button } from 'react-native-elements';
+import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { List, ListItems, Card, Button } from 'react-native-elements'
-
-export default class App extends Component {
+class EventList extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -51,34 +51,58 @@ export default class App extends Component {
             <FlatList
                 data={ this.state.events }
                 renderItem= { ({item}) =>
-                        <Card title={item.key}>
-                            <Text>
-                                {item.description}
-                            </Text>
-                            <Button
+                    <Card title={item.key}>
+                        <Text>
+                            {item.description}
+                        </Text>
+                        <Button
+                            onPress={() => this.props.navigation.push("Details", {
+                                event: item,
+                            })}
                             backgroundColor='#03A9F4'
                             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                             title='VIEW NOW' />
-                        </Card>
-                        
-                    }
+                    </Card>
+
+                }
             />
         );
+    }
+    // render() {
+    //     return (
+    //         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    //             <Text>Home Screen</Text>
+    //         </View>
+    //     );
+    // }
+}
 
-            /*
+class EventDetail extends React.Component {
+    render() {
+        const { navigation } = this.props;
+        const event = navigation.getParam('event', 'null');
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-                        )
-                    }
-                />
-            */
+                <Text>Details Screen {event.description}</Text>
+
+            </View>
+        );
     }
 }
 
-const styles = StyleSheet.create({
-container: {
-flex: 1,
-backgroundColor: '#fff',
-alignItems: 'center',
-justifyContent: 'center',
-},
-});
+const RootStack = createStackNavigator(
+    {
+        Home: EventList,
+        Details: EventDetail,
+    },
+    {
+        initialRouteName: 'Home',
+    }
+);
+
+export default class App extends React.Component {
+    render() {
+        return <RootStack />;
+    }
+}
