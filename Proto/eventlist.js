@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Linking, Platform, StyleSheet, Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
 import RootStack from './App'
 export default class EventList extends Component {
@@ -139,6 +139,14 @@ export default class EventList extends Component {
         // console.log(tag);
         return data;
 
+    }
+    mapsRedirection(latlng){
+
+//        const url = 'http://maps.apple.com/?daddr=' + latlng.latitude + ',' + latlng.longitude;
+//        Linking.openURL(url);
+        const url = "https://www.google.com/maps/dir/?api=1&destination=" + latlng.latitude + ',' + latlng.longitude;
+
+        Linking.openURL(url);
     }
     render() {
         console.log("rerendered");
