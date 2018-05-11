@@ -16,10 +16,13 @@ export default class EventDetail extends React.Component {
                     <Text> {event.description} </Text>
                 </View>
             </View>
-            // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            //     <Text>Details Screen {event.description}</Text>
-            //
-            // </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    heading: {
+        fontWeight: "bold",
+        fontSize: 30,
+    },
+});
