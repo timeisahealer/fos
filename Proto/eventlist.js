@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
 
 export default class EventList extends Component {
@@ -147,6 +147,7 @@ export default class EventList extends Component {
             <FlatList
                 data={data}
                 renderItem= { ({item}) =>
+                    <TouchableOpacity onPress={() => console.log("HEY")}>
                     <Card>
                         <View style={{flexDirection:"row", justifyContent:"space-between", marginBottom:10}}>
                             <View style={styles.logo}>
@@ -176,6 +177,7 @@ export default class EventList extends Component {
                             </Text>
                         </View>
                     </Card>
+                    </TouchableOpacity>
                 }
             />
         </View>
