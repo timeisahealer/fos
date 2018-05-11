@@ -3,34 +3,65 @@ import { StyleSheet, View, Text, FlatList} from 'react-native';
 import { List, ListItems, Card, Button } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 
+class Tag extends React.Component {
+    render() {
+        return <Button
+            backgroundColor='#03A9F4'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            title={this.props.name}/> ;
+    }
+}
+
+
 class EventList extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             events: [
                 {
-                    key:"CSE Barbeque",
+                    key: "CSE Barbeque",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "Not John Lions Garden",
                     date: "19-04-2018",
                     tag: ["food", "social"]
                 },
                 {
-                    key:"Phil' Concert",
+                    key: "Phil' Concert",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     tag: ["food", "social"]
                 },
                 {
-                    key:"MedRevue",
+                    key: "MedRevue",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     tag: ["food"]
                 }
             ],
-        };
+
+            food: 0,
+            social: 0,
+            outside: 0,
+            allTags: ["food", "social", "outside"]
+        }
+    }
+
+    toggleTag(tag) {
+        if (tag == 'food') {
+            this.setState({
+                food: !this.state.food
+            });
+        } else if (tag == 'social') {
+            this.setState({
+                social: !this.state.social
+            });
+        } else if (tag == 'outside') {
+            this.setState({
+                outside: !this.state.outside
+            });
+        }
     }
 
     filterTag(array, tag) {
@@ -48,7 +79,28 @@ class EventList extends React.Component {
 
         var data = this.filterTag(this.state.events, "social");
 
+        var tagMarkup = [];
+
+        for(let i = 0; i < this.state.allTags.length; i++){
+            var currTag = this.state.allTags[i];
+            tagMarkup.push(
+                <Button
+                    onPress={() => this.toggleTag({currTag})}
+                    backgroundColor='#03A9F4'
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    title='VIEW NOW'
+                    backgroundColor='#03A9F4'
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    title={currTag}/>
+            )
+        }
+
+
         return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{flexDirection: 'row', margin: 10}}>
+                    {tagMarkup}
+                </View>
             <FlatList
                 data={data}
                 renderItem= { ({item}) =>
@@ -67,6 +119,7 @@ class EventList extends React.Component {
 
                 }
             />
+            </View>
         );
     }
     // render() {
@@ -123,4 +176,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
     },
+    buttonText:{
+        fontWeight: 'bold',
+        fontSize: 30,
+    }
 });
