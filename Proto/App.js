@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
+import { AppRegistry, StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
 import { List, ListItems, Card, Button,Icon, Avatar, Header, Divider } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import EventList from './eventlist';
@@ -7,6 +7,7 @@ import EventDetail from './eventdetail';
 
 class DisplayEventList extends React.Component {
     render() {
+        console.log(this.props.navigation)
         return (
         <View>
         <Header backgroundColor="#49BEAA"
@@ -15,7 +16,7 @@ class DisplayEventList extends React.Component {
         />
         <Text style={{fontSize:34, fontFamily: "Avenir", fontWeight:"600", marginLeft:20, marginTop:12}}>Events Near You</Text>
         <Divider style={{ backgroundColor: '#D3D3D3', width:'80%', height: 3, marginBottom: 10 }} />
-        <EventList />
+        <EventList navigation={this.props.navigation}/>
         </View> );
     }
 }
@@ -54,7 +55,6 @@ const styles = StyleSheet.create({
     },
 
 });
-
 
 /*
 <Card style={styles.cardContainer}>

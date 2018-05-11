@@ -1,4 +1,6 @@
 import React from "react";
+import { Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default class EventDetail extends React.Component {
     render() {
@@ -23,3 +25,9 @@ export default class EventDetail extends React.Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    heading: {
+        fontWeight:"bold",
+    }
+});
