@@ -1,181 +1,29 @@
-
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, View, Text, FlatList} from 'react-native';
-import { List, ListItems, Card, Button } from 'react-native-elements';
+import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
+import { List, ListItems, Card, Button,Icon, Avatar, Header, Divider } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
+import EventList from './eventlist';
+import EventDetail from './eventdetail';
+import Geolocation from './geolocation';
 
-class GeolocationExample extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      latitude: null,
-      longitude: null,
-      error: null,
-      region: {
-                latitude: -33.8701062,
-                longitude: 151.2076937,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              },
-    };
-  }
-
-
-    onRegionChange(region) {
-        console.log(region);
-        console.log(this.state.region);
-        this.setState({
-            region: region
-        });
-    }
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null,
-        });
-      },
-      (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-    );
-  }
-
-  render() {
-    return (
-      <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text></Text>
-            <MapView style={styles.map}
-                    showsUserLocation={ true }
-                    region={ this.state.region }
-                    onRegionChange={ region => this.setState({region}) }
-                    onRegionChangeComplete={ region => this.setState({region}) }
-            >
-            <Marker
-              coordinate={this.props.event.latlng}
-//              {{
-//                latitude: -33.8701062,
-//                longitude: 151.2076937,
-//              }}
-            />
-            </MapView>
-
-        {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
-      </View>
-    );
-  }
-}
-
-class EventList extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            events: [
-                {
-                    key:"CSE Barbeque",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "Not John Lions Garden",
-                    date: "19-04-2018",
-                    tag: ["food", "social"],
-                    latlng: {
-                        latitude: -33.8701062,
-                        longitude: 151.2076937,
-                    },
-                },
-                {
-                    key:"Phil' Concert",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    latlng: {
-                      latitude: -33.8701062,
-                      longitude: 151.2076937,
-                    },
-                    tag: ["food", "social"],
-                },
-                {
-                    key:"MedRevue",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                  latlng: {
-                      latitude: -33.8701062,
-                      longitude: 151.2076937,
-                  },
-                    tag: ["food"]
-                }
-            ],
-        };
-    }
-
-    filterTag(array, tag) {
-        var data = [];
-        for (var i = 0; i < array.length; i++) {
-            var item = array[i];
-            if (item.tag.includes(tag)) {
-                data.push(item);
-            }
-        }
-        console.log(data.length)
-        return data;
-    }
+class DisplayEventList extends React.Component {
     render() {
-
-        var data = this.filterTag(this.state.events, "social");
-
         return (
-            <FlatList
-                data={data}
-                renderItem= { ({item}) =>
-                    <Card title={item.key}>
-                        <Text>
-                            {item.description}
-                        </Text>
-                        <Button
-                            onPress={() => this.props.navigation.push("Details", {
-                                event: item,
-                            })}
-                            backgroundColor='#03A9F4'
-                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                            title='VIEW NOW' />
-                    </Card>
-
-                }
-            />
-        );
+        <View>
+        <Header backgroundColor="#49DCB1"
+        centerComponent={{ text: 'Hey h@ck0Rz'}}
+        rightComponent={{icon: 'home', color: '#fff'}}
+        />
+        <Text style={{fontSize:34, fontFamily: "normal", fontWeight:"600", marginLeft:20, marginTop:12}}>Events Near You</Text>
+        <Divider style={{ backgroundColor: '#D3D3D3', width:'80%', height: 3, marginBottom: 10 }} />
+        <EventList/>
+        </View> );
     }
-    // render() {
-    //     return (
-    //         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //         </View>
-    //     );
-    // }
 }
-
-class EventDetail extends React.Component {
+export default class App extends React.Component {
     render() {
-        const { navigation } = this.props;
-        const event = navigation.getParam('event', 'null');
-        return (
-            <View style={{flex: 1, flexDirection: 'column'}}>
-                <View style={{width: '100%', height: '20%', backgroundColor: 'steelblue', alignItems: 'center', justifyContent: 'center'}}>
-                    <Text style={styles.heading}> {event.key} </Text>
-                </View>
-                <View style={{width: '100%', height: '10%', backgroundColor: 'white', alignItems: 'center', justifyContent: 'center'}}>
-                    <Text> {event.date} </Text>
-                </View>
-                <View style={{width: '100%', height: '10%', backgroundColor: 'powderblue', alignItems: 'center', justifyContent: 'center'}}>
-                     <Text> {event.description} </Text>
-                </View>
-                <GeolocationExample event={event} />
-            </View>
-            // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            //     <Text>Details Screen {event.description}</Text>
-            //
-            // </View>
+        return  (<RootStack />
         );
     }
 }
@@ -184,18 +32,12 @@ const RootStack = createStackNavigator(
     {
         Home: EventList,
         Details: EventDetail,
+        Display: DisplayEventList,
     },
     {
         initialRouteName: 'Home',
     }
 );
-
-export default class App extends React.Component {
-    render() {
-        return <RootStack />;
-    }
-}
-
 
 const styles = StyleSheet.create({
     heading: {
@@ -209,4 +51,49 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0
      },
+    buttonText: {
+        fontWeight: 'bold',
+        fontSize: 30,
+    },
+    pressed: {
+        backgroundColor: 'steelblue',
+    },
+    notPressed: {
+        backgroundColor: 'powderblue',
+    },
+
 });
+
+
+/*
+<Card style={styles.cardContainer}>
+        <View style={styles.boxleft}>
+            // society logo
+            <Avatar
+                size="large"
+                rounded
+                title="TEST"
+                onPress={() => console.log("Works bitch!")}
+                activeOpacity={0.7} />
+            // background imaging
+
+            // date
+            // time
+        </View>
+        <View style={[styles.boxright]}>
+            // Title
+            // location
+            // society name
+            // get direction button
+            // share button
+    </View>
+    {
+    //<Text>
+    //    {item.description}
+    //</Text>
+    /*
+    <Button
+    backgroundColor='#03A9F4'
+    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+    title='VIEW NOW' />
+    */
