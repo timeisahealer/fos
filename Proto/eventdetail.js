@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import Geolocation from "./geolocation"
 
 export default class EventDetail extends React.Component {
@@ -18,10 +19,13 @@ export default class EventDetail extends React.Component {
                 </View>
                 <Geolocation event={event} />
             </View>
-            // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            //     <Text>Details Screen {event.description}</Text>
-            //
-            // </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    heading: {
+        fontWeight: "bold",
+        fontSize: 30,
+    },
+});
