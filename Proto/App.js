@@ -15,8 +15,8 @@ class DisplayEventList extends React.Component {
         centerComponent={{ text: 'Hey h@ck0Rz'}}
         rightComponent={{icon: 'home', color: '#fff'}}
         />
-        <Text style={{fontSize:34, fontFamily: "normal", fontWeight:"600", marginLeft:20, marginTop:12}}>Events Near You</Text>
-        <Divider style={{ backgroundColor: '#D3D3D3', width:'80%', height: 3, marginBottom: 10 }} />
+        <Text style={ styles.mainTitle }>Events Near You</Text>
+        <Divider style={ styles.sectionDivider } />
         <EventList />
         </View> );
     }
@@ -40,9 +40,18 @@ const RootStack = createStackNavigator(
 );
 
 const styles = StyleSheet.create({
-    heading: {
-        fontWeight: 'bold',
-        fontSize: 30,
+    mainTitle: {
+        fontSize:34, 
+        fontFamily: "Avenir", 
+        fontWeight:"600", 
+        marginLeft:20, 
+        marginTop:12,
+    },
+    sectionDivider: {
+        backgroundColor: '#D3D3D3', 
+        width:'80%', 
+        height: 3, 
+        marginBottom: 10
     },
     map: {
         width: '100%',
@@ -55,45 +64,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
     },
-    pressed: {
-        backgroundColor: 'steelblue',
-    },
-    notPressed: {
-        backgroundColor: 'powderblue',
-    },
-
 });
-
-
-/*
-<Card style={styles.cardContainer}>
-        <View style={styles.boxleft}>
-            // society logo
-            <Avatar
-                size="large"
-                rounded
-                title="TEST"
-                onPress={() => console.log("Works bitch!")}
-                activeOpacity={0.7} />
-            // background imaging
-
-            // date
-            // time
-        </View>
-        <View style={[styles.boxright]}>
-            // Title
-            // location
-            // society name
-            // get direction button
-            // share button
-    </View>
-    {
-    //<Text>
-    //    {item.description}
-    //</Text>
-    /*
-    <Button
-    backgroundColor='#03A9F4'
-    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-    title='VIEW NOW' />
-    */
