@@ -1,4 +1,5 @@
 import React from "react";
+import { Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { StyleSheet } from "react-native";
 import Geolocation from "./geolocation"
 

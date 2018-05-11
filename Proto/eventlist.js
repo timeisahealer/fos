@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Linking, Platform, StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import { Linking, Platform, StyleSheet, Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
-
+import RootStack from './App'
 export default class EventList extends Component {
     constructor(props){
         super(props);
@@ -179,6 +179,7 @@ export default class EventList extends Component {
                 <FlatList
                     data={data}
                     renderItem= { ({item}) =>
+                        <TouchableOpacity onPress={() => this.props.navigation.push("Details", { event: item, })}>
                         <Card>
                             <View style={ styles.actionRow }>
                                 <View>

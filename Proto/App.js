@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import React, {Component} from 'react';
 import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import { List, ListItems, Card, Button,Icon, Avatar, Header, Divider } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import EventList from './eventlist';
@@ -9,6 +9,7 @@ import Geolocation from './geolocation';
 
 class DisplayEventList extends React.Component {
     render() {
+        console.log(this.props.navigation)
         return (
         <View>
         <Header backgroundColor="#49BEAA"
@@ -17,7 +18,7 @@ class DisplayEventList extends React.Component {
         />
         <Text style={ styles.mainTitle }>Events Near You</Text>
         <Divider style={ styles.sectionDivider } />
-        <EventList />
+        <EventList navigation={this.props.navigation}/>
         </View> );
     }
 }
