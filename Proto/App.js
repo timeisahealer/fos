@@ -11,45 +11,46 @@ class EventList extends React.Component {
                 {
                     key:"CSE Barbeque",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018"
+                    location: "Not John Lions Garden",
+                    date: "19-04-2018",
+                    tag: ["food", "social"]
                 },
                 {
                     key:"Phil' Concert",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
-                    date: "19-04-2018"
+                    date: "19-04-2018",
+                    tag: ["food", "social"]
                 },
                 {
                     key:"MedRevue",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
-                    date: "19-04-2018"
+                    date: "19-04-2018",
+                    tag: ["food"]
                 }
-            ]
+            ],
         };
     }
+
+    filterTag(array, tag) {
+        var data = [];
+        for (var i = 0; i < array.length; i++) {
+            var item = array[i];
+            if (item.tag.includes(tag)) {
+                data.push(item);
+            }
+        }
+        console.log(data.length)
+        return data;
+    }
     render() {
+
+        var data = this.filterTag(this.state.events, "social");
+
         return (
-            /*
-            <View style = {styles.container}>
-                <FlatList
-                  data={[
-                    {key: 'Devin'},
-                    {key: 'Jackson'},
-                    {key: 'James'},
-                    {key: 'Joel'},
-                    {key: 'John'},
-                    {key: 'Jillian'},
-                    {key: 'Jimmy'},
-                    {key: 'Julie'},
-                  ]}
-                  renderItem={({item}) => <Text>{item.key}</Text>}
-                />
-            </View>
-            */
             <FlatList
-                data={ this.state.events }
+                data={data}
                 renderItem= { ({item}) =>
                     <Card title={item.key}>
                         <Text>
@@ -71,7 +72,6 @@ class EventList extends React.Component {
     // render() {
     //     return (
     //         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //             <Text>Home Screen</Text>
     //         </View>
     //     );
     // }
