@@ -1,5 +1,6 @@
 import React from 'react';
 import App from './App';
+import Events from './Event';
 
 import renderer from 'react-test-renderer';
 
