@@ -3,59 +3,10 @@ import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
 
 export default class EventList extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            events: [
-                {
-                    key:"CSE Barbeque",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "12:00-02:00pm"
-                },
-                {
-                    key:"Phil' Concert",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "02:00-04:00pm"
-                },
-                {
-                    key:"MedRevue",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "08:00-10:00pm"
-                },
-                {
-                    key:"DogSoc We Dogs",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "12:00-02:00pm"
-                },
-                {
-                    key:"Tea and Coffee @ Colombo",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "02:00-04:00pm"
-                },
-                {
-                    key:"Hackathon",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "08:00-10:00pm"
-                },
-            ]
-        };
-    }
     render(){
         return (
             <FlatList
-                data={ this.state.events }
+                data={ this.props.events }
                 renderItem= { ({item}) =>
                     <Card>
                         <View style={{flexDirection:"row", justifyContent:"space-between", marginBottom:10}}>
