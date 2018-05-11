@@ -11,13 +11,13 @@ class DisplayEventList extends React.Component {
     render() {
         return (
         <View>
-        <Header backgroundColor="#49DCB1"
+        <Header backgroundColor="#49BEAA"
         centerComponent={{ text: 'Hey h@ck0Rz'}}
         rightComponent={{icon: 'home', color: '#fff'}}
         />
         <Text style={{fontSize:34, fontFamily: "normal", fontWeight:"600", marginLeft:20, marginTop:12}}>Events Near You</Text>
         <Divider style={{ backgroundColor: '#D3D3D3', width:'80%', height: 3, marginBottom: 10 }} />
-        <EventList/>
+        <EventList />
         </View> );
     }
 }
@@ -35,7 +35,7 @@ const RootStack = createStackNavigator(
         Display: DisplayEventList,
     },
     {
-        initialRouteName: 'Home',
+        initialRouteName: 'Display',
     }
 );
 
