@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, View, Text, FlatList} from 'react-native';
 import { List, ListItems, Card, Button } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
@@ -47,12 +47,21 @@ class GeolocationExample extends Component {
   render() {
     return (
       <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text></Text>
             <MapView style={styles.map}
                     showsUserLocation={ true }
                     region={ this.state.region }
                     onRegionChange={ region => this.setState({region}) }
                     onRegionChangeComplete={ region => this.setState({region}) }
+            >
+            <Marker
+              coordinate={this.props.event.latlng}
+//              {{
+//                latitude: -33.8701062,
+//                longitude: 151.2076937,
+//              }}
             />
+            </MapView>
 
         {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
       </View>
@@ -69,19 +78,31 @@ class EventList extends React.Component {
                     key:"CSE Barbeque",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
-                    date: "19-04-2018"
+                    date: "19-04-2018",
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    }
                 },
                 {
                     key:"Phil' Concert",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
-                    date: "19-04-2018"
+                    date: "19-04-2018",
+                  latlng: {
+                      latitude: -33.8701062,
+                      longitude: 151.2076937,
+                  }
                 },
                 {
                     key:"MedRevue",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
-                    date: "19-04-2018"
+                    date: "19-04-2018",
+                      latlng: {
+                          latitude: -33.8701062,
+                          longitude: 151.2076937,
+                      }
                 }
             ]
         };
@@ -149,7 +170,7 @@ class EventDetail extends React.Component {
                 <View style={{width: '100%', height: '10%', backgroundColor: 'powderblue', alignItems: 'center', justifyContent: 'center'}}>
                      <Text> {event.description} </Text>
                 </View>
-                <GeolocationExample />
+                <GeolocationExample event={event} />
             </View>
             // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             //     <Text>Details Screen {event.description}</Text>
