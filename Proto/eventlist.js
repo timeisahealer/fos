@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import { Linking, Platform, StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
 
 export default class EventList extends Component {
@@ -140,6 +140,14 @@ export default class EventList extends Component {
         return data;
 
     }
+    mapsRedirection(latlng){
+
+//        const url = 'http://maps.apple.com/?daddr=' + latlng.latitude + ',' + latlng.longitude;
+//        Linking.openURL(url);
+        const url = "https://www.google.com/maps/dir/?api=1&destination=" + latlng.latitude + ',' + latlng.longitude;
+
+        Linking.openURL(url);
+    }
     render() {
         console.log("rerendered");
         var data = this.filterAllTags(this.state.events);
@@ -182,7 +190,7 @@ export default class EventList extends Component {
                                     activeOpacity={0.7} />
                             </View>
                             <View style={{flexDirection:"row"}}>
-                                <Icon reverse color="#49BEAA" size={13} name='near-me' />
+                                <Icon reverse color="#49BEAA" size={13} name='near-me' onPress={() => this.mapsRedirection(item.latlng)}/>
                                 <Icon reverse color="#49BEAA" size={13} name='share' />
                             </View>
                         </View>
