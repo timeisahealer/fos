@@ -13,7 +13,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "12:00-02:00pm",
-                    tag: ["food"]
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Phil' Concert",
@@ -21,7 +25,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "02:00-04:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"MedRevue",
@@ -29,7 +37,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "08:00-10:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"DogSoc We Dogs",
@@ -37,7 +49,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "12:00-02:00pm",
-                    tag: ["outside"]
+                    tag: ["outside"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Tea and Coffee @ Colombo",
@@ -45,7 +61,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "02:00-04:00pm",
-                    tag: ["food"]
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Hackathon",
@@ -53,7 +73,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "08:00-10:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
             ],
             food: false,
@@ -133,7 +157,7 @@ export default class EventList extends Component {
                     key={currTag}
                     onPress={() => this.toggleTag(this.state.allTags[i])}
                     // style={}
-                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0},this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
+                    buttonStyle={styles.filterButton,this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
                     title='VIEW NOW'
                     title={currTag}/>
             )
@@ -141,70 +165,83 @@ export default class EventList extends Component {
 
         return (
             <View>
-            <View style={{flexDirection: 'row', margin: 10}}>
-            {tagMarkup}
+                <View style={ styles.filterTagRow }>
+                    {tagMarkup}
+                </View>
+                <FlatList
+                    data={data}
+                    renderItem= { ({item}) =>
+                        <TouchableOpacity onPress={() => this.props.navigation.push("Details", { event: item, })}>
+                        <Card>
+                            <View style={ styles.actionRow }>
+                                <View>
+                                    <Avatar
+                                        size="xlarge"
+                                        rounded
+                                        title="test"
+                                        onPress={() => console.log("Works bitch!")}
+                                        activeOpacity={0.7} />
+                                </View>
+                                <View style={ styles.actionButtons }>
+                                    <Icon reverse color="#49BEAA" size={13} name='near-me' />
+                                    <Icon reverse color="#49BEAA" size={13} name='share' />
+                                </View>
+                            </View>
+                            <View>
+                                <Text style={styles.eventTitle}>
+                                    {item.key}
+                                </Text>
+                            </View>
+                            <View>
+                                <Text style={styles.eventLocation}>
+                                    {item.location}
+                                </Text>
+                                <Text style={styles.eventDatetime}>
+                                    {item.date + "        " + item.time}
+                                </Text>
+                            </View>
+                        </Card>
+                    }
+                />
             </View>
-            <FlatList
-                data={data}
-                renderItem= { ({item}) =>
-                    <TouchableOpacity onPress={() => this.props.navigation.push("Details", { event: item, })}>
-                    <Card>
-                        <View style={{flexDirection:"row", justifyContent:"space-between", marginBottom:10}}>
-                            <View style={styles.logo}>
-                                <Avatar
-                                    size="xlarge"
-                                    rounded
-                                    title="test"
-                                    onPress={() => console.log("Works bitch!")}
-                                    activeOpacity={0.7} />
-                            </View>
-                            <View style={{flexDirection:"row"}}>
-                                <Icon reverse color="#49BEAA" size={13} name='near-me' />
-                                <Icon reverse color="#49BEAA" size={13} name='share' />
-                            </View>
-                        </View>
-                        <View style={styles.eventTitle}>
-                            <Text style={{fontSize:20, fontWeight:"bold", fontFamily:"Avenir"}}>
-                                {item.key}
-                            </Text>
-                        </View>
-                        <View style={styles.eventDetails}>
-                            <Text style={{color: "#5F6A6A", fontFamily:"Avenir", fontSize:12, fontWeight:"500"}}>
-                                {item.location}
-                            </Text>
-                            <Text style={{color: "#5F6A6A", fontFamily:"Avenir", fontSize:11,}}>
-                                {item.date + "        " + item.time}
-                            </Text>
-                        </View>
-                    </Card>
-                    </TouchableOpacity>
-                }
-            />
-        </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    cardContainer: {
-        flexDirection: 'row'
+    filterButton: {
+        borderRadius: 0, 
+        marginLeft: 0, 
+        marginRight: 0, 
+        marginBottom: 0,
     },
-    boxleft: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF'
+    filterTagRow: {
+        flexDirection: 'row', 
+        margin: 10,
     },
-    boxright: {
-        flex: 2.5,
-        backgroundColor: '#FFFFFF'
+    actionRow: {
+        flexDirection:"row", 
+        justifyContent:"space-between", 
+        marginBottom:10,
     },
-    heading: {
-        fontWeight: 'bold',
-        fontSize: 30,
+    actionButtons: {
+        flexDirection:"row",
     },
-    buttonText: {
-        fontWeight: 'bold',
-        fontSize: 30,
+    eventTitle: {
+        fontSize:20, 
+        fontWeight:"bold", 
+        fontFamily:"Avenir",
+    },
+    eventLocation: {
+        color: "#5F6A6A", 
+        fontFamily:"Avenir", 
+        fontSize:12, 
+        fontWeight:"500",
+    },
+    eventDatetime: {
+        color: "#5F6A6A", 
+        fontFamily:"Avenir", 
+        fontSize:11,
     },
     pressed: {
         backgroundColor: 'steelblue',
