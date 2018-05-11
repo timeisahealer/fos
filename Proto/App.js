@@ -9,38 +9,68 @@ export default class App extends Component {
         this.state = {
             events: [
                 {
-                    title:"CSE Barbeque",
+                    key:"CSE Barbeque",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    // location: "John Lions Garden",
-                    // date: "19-04-2018"
+                    location: "John Lions Garden",
+                    date: "19-04-2018"
+                },
+                {
+                    key:"Phil' Concert",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018"
+                },
+                {
+                    key:"MedRevue",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018"
                 }
             ]
         };
     }
-
     render() {
         return (
-            <List>
+            /*
+            <View style = {styles.container}>
                 <FlatList
-                    data={ this.state.events }
-                    renderItem={ ({ event }) => return (
+                  data={[
+                    {key: 'Devin'},
+                    {key: 'Jackson'},
+                    {key: 'James'},
+                    {key: 'Joel'},
+                    {key: 'John'},
+                    {key: 'Jillian'},
+                    {key: 'Jimmy'},
+                    {key: 'Julie'},
+                  ]}
+                  renderItem={({item}) => <Text>{item.key}</Text>}
+                />
+            </View>
+            */
+            <FlatList
+                data={ this.state.events }
+                renderItem= { ({item}) =>
+                        <Card title={item.key}>
+                            <Text>
+                                {item.description}
+                            </Text>
+                            <Button
+                            backgroundColor='#03A9F4'
+                            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                            title='VIEW NOW' />
+                        </Card>
+                        
+                    }
+            />
+        );
 
-                            <Card title={event.title}>
-                                <Text style={{marginBottom: 10}}>
-                                    {event.description}
-                                </Text>
-                                <Button
-                                icon={{name: 'code'}}
-                                backgroundColor='#03A9F4'
-                                fontFamily='Lato'
-                                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                                title='VIEW NOW' />
-                            </Card>
+            /*
+
                         )
                     }
                 />
-            </List>
-        );
+            */
     }
 }
 
