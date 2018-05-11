@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList} from 'react-native';
+import { StyleSheet, View, Text, FlatList} from 'react-native';
 import { List, ListItems, Card, Button } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 
@@ -82,11 +82,21 @@ class EventDetail extends React.Component {
         const { navigation } = this.props;
         const event = navigation.getParam('event', 'null');
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
-                <Text>Details Screen {event.description}</Text>
-
+            <View style={{flex: 1, flexDirection: 'column'}}>
+                <View style={{width: '100%', height: '20%', backgroundColor: 'steelblue', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={styles.heading}> {event.key} </Text>
+                </View>
+                <View style={{width: '100%', height: '10%', backgroundColor: 'white', alignItems: 'center', justifyContent: 'center'}}>
+                    <Text> {event.date} </Text>
+                </View>
+                <View style={{width: '100%', height: '70%', backgroundColor: 'powderblue', alignItems: 'center', justifyContent: 'center'}}>
+                     <Text> {event.description} </Text>
+                </View>
             </View>
+            // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            //     <Text>Details Screen {event.description}</Text>
+            //
+            // </View>
         );
     }
 }
@@ -106,3 +116,11 @@ export default class App extends React.Component {
         return <RootStack />;
     }
 }
+
+
+const styles = StyleSheet.create({
+    heading: {
+        fontWeight: 'bold',
+        fontSize: 30,
+    },
+});
