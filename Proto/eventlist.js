@@ -158,8 +158,8 @@ export default class EventList extends Component {
                                         activeOpacity={0.7} />
                                 </View>
                                 <View style={ styles.actionButtons }>
-                                    <Icon style={styles.actionButtonIcon} name='near-me' />
-                                    <Icon style={styles.actionButtonIcon} name='share' />
+                                    <Icon reverse color="#49BEAA" size={13} name='near-me' />
+                                    <Icon reverse color="#49BEAA" size={13} name='share' />
                                 </View>
                             </View>
                             <View>
@@ -201,11 +201,6 @@ const styles = StyleSheet.create({
     },
     actionButtons: {
         flexDirection:"row",
-    },
-    actionButtonIcon: {
-        reverse: true,
-        color: "#49BEAA",
-        size: 13
     },
     eventTitle: {
         fontSize:20, 
