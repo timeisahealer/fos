@@ -140,7 +140,7 @@ export default class EventList extends Component {
         }
 
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View>
             <View style={{flexDirection: 'row', margin: 10}}>
             {tagMarkup}
             </View>
@@ -178,7 +178,7 @@ export default class EventList extends Component {
                     </Card>
                 }
             />
-            </View>
+        </View>
         );
     }
 }
@@ -196,5 +196,19 @@ const styles = StyleSheet.create({
     boxright: {
         flex: 2.5,
         backgroundColor: '#FFFFFF'
-    }
+    },
+    heading: {
+        fontWeight: 'bold',
+        fontSize: 30,
+    },
+    buttonText: {
+        fontWeight: 'bold',
+        fontSize: 30,
+    },
+    pressed: {
+        backgroundColor: 'steelblue',
+    },
+    notPressed: {
+        backgroundColor: 'powderblue',
+    },
 });
