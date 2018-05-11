@@ -13,7 +13,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "12:00-02:00pm",
-                    tag: ["food"]
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Phil' Concert",
@@ -21,7 +25,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "02:00-04:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"MedRevue",
@@ -29,7 +37,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "08:00-10:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"DogSoc We Dogs",
@@ -37,7 +49,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "12:00-02:00pm",
-                    tag: ["outside"]
+                    tag: ["outside"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Tea and Coffee @ Colombo",
@@ -45,7 +61,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "02:00-04:00pm",
-                    tag: ["food"]
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Hackathon",
@@ -53,7 +73,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "08:00-10:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
             ],
             food: false,
@@ -163,15 +187,15 @@ export default class EventList extends Component {
                             </View>
                         </View>
                         <View style={styles.eventTitle}>
-                            <Text style={{fontSize:20, fontWeight:"bold", fontFamily:"Avenir"}}>
+                            <Text style={{fontSize:20, fontWeight:"bold", fontFamily:"normal"}}>
                                 {item.key}
                             </Text>
                         </View>
                         <View style={styles.eventDetails}>
-                            <Text style={{color: "#5F6A6A", fontFamily:"Avenir", fontSize:12, fontWeight:"500"}}>
+                            <Text style={{color: "#5F6A6A", fontFamily:"normal", fontSize:12, fontWeight:"500"}}>
                                 {item.location}
                             </Text>
-                            <Text style={{color: "#5F6A6A", fontFamily:"Avenir", fontSize:11,}}>
+                            <Text style={{color: "#5F6A6A", fontFamily:"normal", fontSize:11,}}>
                                 {item.date + "        " + item.time}
                             </Text>
                         </View>
