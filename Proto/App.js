@@ -23,32 +23,34 @@ class EventList extends React.Component {
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "Not John Lions Garden",
                     date: "19-04-2018",
-                    tag: ["food", "social"]
+                    tag: ["food"]
                 },
                 {
                     key: "Phil' Concert",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
                     date: "19-04-2018",
-                    tag: ["food", "social"]
+                    tag: ["social"]
                 },
                 {
                     key: "MedRevue",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
                     date: "19-04-2018",
-                    tag: ["food"]
+                    tag: ["outside"]
                 }
             ],
 
-            food: 0,
-            social: 0,
-            outside: 0,
+            food: false,
+            social: false,
+            outside: false,
             allTags: ["food", "social", "outside"]
         }
     }
 
     toggleTag(tag) {
+        console.log("TAG IS:");
+        console.log(tag);
         if (tag == 'food') {
             this.setState({
                 food: !this.state.food
@@ -62,9 +64,33 @@ class EventList extends React.Component {
                 outside: !this.state.outside
             });
         }
+        console.log(this.state.food);
+        console.log(this.state.social);
+        console.log(this.state.outside);
+    }
+
+    filterAllTags(array) {
+        var array = this.state.events;
+        if (this.state.food == true) {
+            array = this.filterTag(array, "food");
+        }
+        // console.log("size");
+        // console.log(array.length);
+        if (this.state.social == true) {
+            array = this.filterTag(array, "social");
+        }
+        // console.log("size");
+        // console.log(array.length);
+        if (this.state.outside == true) {
+            array = this.filterTag(array, "outside");
+        }
+        // console.log("size");
+        // console.log(array.length);
+        return array;
     }
 
     filterTag(array, tag) {
+        console.log(tag);
         var data = [];
         for (var i = 0; i < array.length; i++) {
             var item = array[i];
@@ -72,25 +98,28 @@ class EventList extends React.Component {
                 data.push(item);
             }
         }
-        console.log(data.length)
+        // console.log(tag);
         return data;
     }
     render() {
-
-        var data = this.filterTag(this.state.events, "social");
+        console.log("rerendered");
+        var data = this.filterAllTags(this.state.events);
 
         var tagMarkup = [];
 
         for(let i = 0; i < this.state.allTags.length; i++){
             var currTag = this.state.allTags[i];
+            console.log('<<<');
+            console.log(this.state[this.state.allTags[i]]);
+            console.log(this.state.allTags[i]);
+            // console.log(currTag);
             tagMarkup.push(
                 <Button
-                    onPress={() => this.toggleTag({currTag})}
-                    backgroundColor='#03A9F4'
-                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    key={currTag}
+                    onPress={() => this.toggleTag(this.state.allTags[i])}
+                    // style={}
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0},this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
                     title='VIEW NOW'
-                    backgroundColor='#03A9F4'
-                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                     title={currTag}/>
             )
         }
@@ -176,8 +205,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
     },
-    buttonText:{
+    buttonText: {
         fontWeight: 'bold',
         fontSize: 30,
-    }
+    },
+    pressed: {
+        backgroundColor: 'steelblue',
+    },
+    notPressed: {
+        backgroundColor: 'powderblue',
+    },
+
 });
