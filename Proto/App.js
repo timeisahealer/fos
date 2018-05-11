@@ -13,6 +13,18 @@ export default class App extends Component {
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
                     date: "19-04-2018"
+                },
+                {
+                    key:"Phil' Concert",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018"
+                },
+                {
+                    key:"MedRevue",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018"
                 }
             ]
         };
