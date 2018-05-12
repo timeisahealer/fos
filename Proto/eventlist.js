@@ -5,90 +5,14 @@ import RootStack from './App'
 export default class EventList extends Component {
     constructor(props){
         super(props);
+            console.log(this.props);
         this.state = {
-            events: [
-                {
-                    key:"CSE Barbeque",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "12:00-02:00pm",
-                    tag: ["food"],
-                    latlng: {
-                        latitude: -33.8701062,
-                        longitude: 151.2076937,
-                    },
-                    cheers: 0
-                },
-                {
-                    key:"Phil' Concert",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "02:00-04:00pm",
-                    tag: ["social"],
-                    latlng: {
-                        latitude: -33.8701062,
-                        longitude: 151.2076937,
-                    },
-                    cheers: 0
-                },
-                {
-                    key:"MedRevue",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "08:00-10:00pm",
-                    tag: ["social"],
-                    latlng: {
-                        latitude: -33.8701062,
-                        longitude: 151.2076937,
-                    },
-                    cheers: 0
-                },
-                {
-                    key:"DogSoc We Dogs",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "12:00-02:00pm",
-                    tag: ["outside"],
-                    latlng: {
-                        latitude: -33.8701062,
-                        longitude: 151.2076937,
-                    },
-                    cheers: 0
-                },
-                {
-                    key:"Tea and Coffee @ Colombo",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "02:00-04:00pm",
-                    tag: ["food"],
-                    latlng: {
-                        latitude: -33.8701062,
-                        longitude: 151.2076937,
-                    },
-                },
-                {
-                    key:"Hackathon",
-                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                    location: "John Lions Garden",
-                    date: "19-04-2018",
-                    time: "08:00-10:00pm",
-                    tag: ["social"],
-                    latlng: {
-                        latitude: -33.8701062,
-                        longitude: 151.2076937,
-                    },
-                    cheers: 0
-                },
-            ],
-            food: false,
-            social: false,
-            outside: false,
-            allTags: ["food", "social", "outside"]
+            events: this.props.eventInfo.events,
+            food: this.props.eventInfo.food,
+            social: this.props.eventInfo.social,
+            outside: this.props.eventInfo.outside,
+            allTags: this.props.eventInfo.allTags,
+
         };
     }
 

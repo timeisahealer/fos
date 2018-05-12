@@ -10,7 +10,95 @@ import {
   createBottomTabNavigator,
   createStackNavigator,
 } from 'react-navigation';
+ const eventInfo = {
+    events: [
+
+                   {
+                       key:"CSE Barbeque",
+                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                       location: "John Lions Garden",
+                       date: "19-04-2018",
+                       time: "12:00-02:00pm",
+                       tag: ["food"],
+                       latlng: {
+                           latitude: -33.8701062,
+                           longitude: 151.2076937,
+                       },
+                       cheers: 0
+                   },
+                   {
+                       key:"Phil' Concert",
+                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                       location: "John Lions Garden",
+                       date: "19-04-2018",
+                       time: "02:00-04:00pm",
+                       tag: ["social"],
+                       latlng: {
+                           latitude: -33.8701062,
+                           longitude: 151.2076937,
+                       },
+                       cheers: 0
+                   },
+                   {
+                       key:"MedRevue",
+                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                       location: "John Lions Garden",
+                       date: "19-04-2018",
+                       time: "08:00-10:00pm",
+                       tag: ["social"],
+                       latlng: {
+                           latitude: -33.8701062,
+                           longitude: 151.2076937,
+                       },
+                       cheers: 0
+                   },
+                   {
+                       key:"DogSoc We Dogs",
+                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                       location: "John Lions Garden",
+                       date: "19-04-2018",
+                       time: "12:00-02:00pm",
+                       tag: ["outside"],
+                       latlng: {
+                           latitude: -33.8701062,
+                           longitude: 151.2076937,
+                       },
+                       cheers: 0
+                   },
+                   {
+                       key:"Tea and Coffee @ Colombo",
+                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                       location: "John Lions Garden",
+                       date: "19-04-2018",
+                       time: "02:00-04:00pm",
+                       tag: ["food"],
+                       latlng: {
+                           latitude: -33.8701062,
+                           longitude: 151.2076937,
+                       },
+                   },
+                   {
+                       key:"Hackathon",
+                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                       location: "John Lions Garden",
+                       date: "19-04-2018",
+                       time: "08:00-10:00pm",
+                       tag: ["social"],
+                       latlng: {
+                           latitude: -33.8701062,
+                           longitude: 151.2076937,
+                       },
+                       cheers: 0
+                   },
+               ],
+               food: false,
+               social: false,
+               outside: false,
+               allTags: ["food", "social", "outside"]
+               }
 class DisplayEventList extends React.Component {
+
+
     render() {
         console.log(this.props.navigation)
         return (
@@ -21,7 +109,7 @@ class DisplayEventList extends React.Component {
         />
         <Text style={ styles.mainTitle }>Events Near You</Text>
         <Divider style={ styles.sectionDivider } />
-        <EventList navigation={this.props.navigation}/>
+        <EventList eventInfo={eventInfo} navigation={this.props.navigation}/>
         </View> );
     }
 }
@@ -86,7 +174,7 @@ export default createBottomTabNavigator(
   },
   {
     /* Other configuration remains unchanged */
-  }
+  },
 );
 const styles = StyleSheet.create({
     mainTitle: {
