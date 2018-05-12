@@ -15,8 +15,8 @@ export default class Geolocation extends Component {
       region: {
                 latitude: -33.8701062,
                 longitude: 151.2076937,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+                latitudeDelta: 0.00001,
+                longitudeDelta: 0.00001,
               },
     };
   }
@@ -28,6 +28,8 @@ export default class Geolocation extends Component {
         this.setState({
             region: region
         });
+        animateToRegion(region,0);
+
     }
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
@@ -50,19 +52,21 @@ export default class Geolocation extends Component {
                     region={ this.state.region }
                     onRegionChange={ region => this.setState({region}) }
                     onRegionChangeComplete={ region => this.setState({region}) }
+            >
+
+              {console.log(this.props)}
+            <Marker
+              coordinate={this.props.event.latlng}
+
             />
+            </MapView>
+
       </View>
 
-//              {console.log(this.props)}
-//            <Marker
-//              coordinate={this.props.event.latlng}
-////              {{
-////                latitude: -33.8701062,
-////                longitude: 151.2076937,
-////              }}
-//            />
-//            </MapView>
-
+//              {{
+//                latitude: -33.8701062,
+//                longitude: 151.2076937,
+//              }}
 //        {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
     );
   }

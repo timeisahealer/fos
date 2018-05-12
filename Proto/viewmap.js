@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
-import styles from './App'
+import {eventInfo} from './App.js';
+
 export default class Geolocation extends Component {
   constructor(props) {
     super(props);
@@ -42,14 +43,34 @@ export default class Geolocation extends Component {
   }
 
   render() {
+    console.log("sjadfklsadjfklsdajfklsdajlkfjasdklfjd  \n\n\n\n" + eventInfo.events);
+
+    	var data = [];
+
+    	for(let i = 1; i < eventInfo.events.length; i++){
+
+    		data.push(
+                        <Marker key={eventInfo.events[i].key} coordinate={eventInfo.events[i].latlng}/>
+
+    		)
+    	}
     return (
-      <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <MapView style={{ width: '100%',height: '100%' }}
-                    region={ this.state.region }
-                    onRegionChange={ region => this.setState({region}) }
-                    onRegionChangeComplete={ region => this.setState({region}) }
-            />
-      </View>
+    <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <MapView style={{ width: '100%',height: '100%' }}
+                  region={ this.state.region }
+                  onRegionChange={ region => this.setState({region}) }
+                  onRegionChangeComplete={ region => this.setState({region}) }
+                  >
+                {data}
+
+
+
+
+
+
+                  </MapView>
+
+            </View>
 
 //              {console.log(this.props)}
 //            <Marker

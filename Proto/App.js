@@ -10,6 +10,8 @@ import {
   createBottomTabNavigator,
   createStackNavigator,
 } from 'react-navigation';
+
+
  const eventInfo = {
     events: [
 
@@ -21,8 +23,8 @@ import {
                        time: "12:00-02:00pm",
                        tag: ["food"],
                        latlng: {
-                           latitude: -33.8701062,
-                           longitude: 151.2076937,
+                           latitude: -33.2301062,
+                           longitude: 151.3074937,
                        },
                        cheers: 0
                    },
@@ -34,8 +36,8 @@ import {
                        time: "02:00-04:00pm",
                        tag: ["social"],
                        latlng: {
-                           latitude: -33.8701062,
-                           longitude: 151.2076937,
+                           latitude: -33.2001062,
+                           longitude: 151.8096937,
                        },
                        cheers: 0
                    },
@@ -47,8 +49,8 @@ import {
                        time: "08:00-10:00pm",
                        tag: ["social"],
                        latlng: {
-                           latitude: -33.8701062,
-                           longitude: 151.2076937,
+                           latitude: -33.566776,
+                           longitude: 151.907811,
                        },
                        cheers: 0
                    },
@@ -60,8 +62,8 @@ import {
                        time: "12:00-02:00pm",
                        tag: ["outside"],
                        latlng: {
-                           latitude: -33.8701062,
-                           longitude: 151.2076937,
+                           latitude: -33.873526,
+                           longitude: 151.504914,
                        },
                        cheers: 0
                    },
@@ -73,8 +75,8 @@ import {
                        time: "02:00-04:00pm",
                        tag: ["food"],
                        latlng: {
-                           latitude: -33.8701062,
-                           longitude: 151.2076937,
+                           latitude: -33.8401062,
+                           longitude: 151.2036937,
                        },
                    },
                    {
@@ -85,7 +87,7 @@ import {
                        time: "08:00-10:00pm",
                        tag: ["social"],
                        latlng: {
-                           latitude: -33.8701062,
+                           latitude: -33.8708062,
                            longitude: 151.2076937,
                        },
                        cheers: 0
@@ -96,6 +98,8 @@ import {
                outside: false,
                allTags: ["food", "social", "outside"]
                }
+
+export {eventInfo};
 class DisplayEventList extends React.Component {
 
 
@@ -164,7 +168,7 @@ const HomeStack = createStackNavigator(
 );
 
 const SettingsStack = createStackNavigator({
-  Home: ViewMap,
+  Home: ViewMap ,
 });
 
 export default createBottomTabNavigator(
