@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { List, ListItems, Card, Button,Icon, Avatar, Header, Divider } from 'react-native-elements';
-import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import EventList from './eventlist';
 import EventDetail from './eventdetail';
 import Geolocation from './geolocation';
-
+import ViewMap from './viewmap';
+import {
+  createBottomTabNavigator,
+  createStackNavigator,
+} from 'react-navigation';
 class DisplayEventList extends React.Component {
     render() {
         console.log(this.props.navigation)
@@ -22,14 +25,46 @@ class DisplayEventList extends React.Component {
         </View> );
     }
 }
-export default class App extends React.Component {
-    render() {
-        return  (<RootStack />
-        );
-    }
+
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Details!</Text>
+      </View>
+    );
+  }
 }
 
-const RootStack = createStackNavigator(
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        {/* other code from before here */}
+        <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Details')}
+        />
+      </View>
+    );
+  }
+}
+
+class SettingsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        {/* other code from before here */}
+        <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Details')}
+        />
+      </View>
+    );
+  }
+}
+
+const HomeStack = createStackNavigator(
     {
         Home: EventList,
         Details: EventDetail,
@@ -40,18 +75,31 @@ const RootStack = createStackNavigator(
     }
 );
 
+const SettingsStack = createStackNavigator({
+  Home: ViewMap,
+});
+
+export default createBottomTabNavigator(
+  {
+    Home: HomeStack,
+    Settings: SettingsStack,
+  },
+  {
+    /* Other configuration remains unchanged */
+  }
+);
 const styles = StyleSheet.create({
     mainTitle: {
         fontSize:34,
 //        fontFamily: "Avenir",
-        fontWeight:"600", 
-        marginLeft:20, 
+        fontWeight:"600",
+        marginLeft:20,
         marginTop:12,
     },
     sectionDivider: {
-        backgroundColor: '#D3D3D3', 
-        width:'80%', 
-        height: 3, 
+        backgroundColor: '#D3D3D3',
+        width:'80%',
+        height: 3,
         marginBottom: 10
     },
     buttonText: {

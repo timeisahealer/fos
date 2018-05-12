@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
 import styles from './App'
+import EventList from './eventlist'
 export default class Geolocation extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+
       latitude: null,
       longitude: null,
       error: null,
