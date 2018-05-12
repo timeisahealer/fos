@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Linking, Platform, StyleSheet, Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity, Share } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
 import RootStack from './App'
+
+
+
 export default class EventList extends Component {
     constructor(props){
         super(props);
@@ -12,8 +15,17 @@ export default class EventList extends Component {
             social: this.props.eventInfo.social,
             outside: this.props.eventInfo.outside,
             allTags: this.props.eventInfo.allTags,
-
         };
+    }
+
+    f = function(s) {
+        for (var i = 0; i < this.state.length; i++) {
+            if (this.state[i].key === s) {
+                state[i].cheers = state[i].cheers + 1
+                console.log(state[i].cheers)
+            }
+        }
+        return 1;
     }
 
     toggleTag(tag) {
@@ -114,11 +126,13 @@ export default class EventList extends Component {
                     key={currTag}
                     onPress={() => this.toggleTag(this.state.allTags[i])}
                     // style={}
-                    buttonStyle={styles.filterButton,this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
-                    title='VIEW NOW'
+                    titleStyle={{ fontSize: 6 }}
+                    buttonStyle={styles.filterButton, this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
                     title={currTag}/>
             )
         }
+
+
 
         return (
             <View>
@@ -140,7 +154,7 @@ export default class EventList extends Component {
                                         activeOpacity={0.7} />
                                 </View>
                                 <View style={ styles.actionButtons }>
-                                    <Icon reverse color="#49BEAA" size={13} name='thumb-up' onPress={() => item.cheers = item.cheers + 1 }/>
+                                    <Icon reverse color="#49BEAA" size={13} name='thumb-up' onPress={() => 1}/>
                                     <Icon reverse color="#49BEAA" size={13} name='near-me' onPress={() => this.mapsRedirection(item.latlng)} />
                                     <Icon reverse color="#49BEAA" size={13} name='share' onPress={() => this.shareMessage(item)} />
                                 </View>
@@ -160,9 +174,8 @@ export default class EventList extends Component {
                                     {item.date + "        " + item.time + "       " + item.cheers + " Cheers"}
                                 </Text>
                             </View>
-                        </Card>
-                        </TouchableOpacity>
-                    }
+                    </Card>
+                    </TouchableOpacity> }
                 />
             </View>
         );
@@ -171,10 +184,6 @@ export default class EventList extends Component {
 
 const styles = StyleSheet.create({
     filterButton: {
-        borderRadius: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: 0,
     },
     filterTagRow: {
         flexDirection: 'row',
@@ -206,8 +215,10 @@ const styles = StyleSheet.create({
     },
     pressed: {
         backgroundColor: 'steelblue',
+        borderRadius: 15,
     },
     notPressed: {
         backgroundColor: 'powderblue',
+        borderRadius: 15,
     },
 });

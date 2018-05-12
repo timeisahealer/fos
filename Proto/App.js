@@ -12,109 +12,174 @@ import {
 } from 'react-navigation';
 
 
+
  const eventInfo = {
     events: [
-
-                   {
-                       key:"CSE Barbeque",
-                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                       location: "John Lions Garden",
-                       date: "19-04-2018",
-                       time: "12:00-02:00pm",
-                       tag: ["food"],
-                       latlng: {
-                           latitude: -33.2301062,
-                           longitude: 151.3074937,
-                       },
-                       cheers: 0
-                   },
-                   {
-                       key:"Phil' Concert",
-                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                       location: "John Lions Garden",
-                       date: "19-04-2018",
-                       time: "02:00-04:00pm",
-                       tag: ["social"],
-                       latlng: {
-                           latitude: -33.2001062,
-                           longitude: 151.8096937,
-                       },
-                       cheers: 0
-                   },
-                   {
-                       key:"MedRevue",
-                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                       location: "John Lions Garden",
-                       date: "19-04-2018",
-                       time: "08:00-10:00pm",
-                       tag: ["social"],
-                       latlng: {
-                           latitude: -33.566776,
-                           longitude: 151.907811,
-                       },
-                       cheers: 0
-                   },
-                   {
-                       key:"DogSoc We Dogs",
-                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                       location: "John Lions Garden",
-                       date: "19-04-2018",
-                       time: "12:00-02:00pm",
-                       tag: ["outside"],
-                       latlng: {
-                           latitude: -33.873526,
-                           longitude: 151.504914,
-                       },
-                       cheers: 0
-                   },
-                   {
-                       key:"Tea and Coffee @ Colombo",
-                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                       location: "John Lions Garden",
-                       date: "19-04-2018",
-                       time: "02:00-04:00pm",
-                       tag: ["food"],
-                       latlng: {
-                           latitude: -33.8401062,
-                           longitude: 151.2036937,
-                       },
-                   },
-                   {
-                       key:"Hackathon",
-                       description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
-                       location: "John Lions Garden",
-                       date: "19-04-2018",
-                       time: "08:00-10:00pm",
-                       tag: ["social"],
-                       latlng: {
-                           latitude: -33.8708062,
-                           longitude: 151.2076937,
-                       },
-                       cheers: 0
-                   },
-               ],
-               food: false,
-               social: false,
-               outside: false,
-               allTags: ["food", "social", "outside"]
-               }
+                {
+                    key:"CSE Barbe",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "12:00-02:00pm",
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"Phil' Concert",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "02:00-04:00pm",
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"MedRevue",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "08:00-10:00pm",
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"DogSoc We Dogs",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "12:00-02:00pm",
+                    tag: ["outside"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"Tea and Coffee @ Colombo",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "02:00-04:00pm",
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                  cheers: 0
+                },
+                {
+                    key:"Hackathon",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "08:00-10:00pm",
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+            ],
+            food: false,
+            social: false,
+            outside: false,
+            allTags: ["food", "social", "outside"]
+ }
 
 export {eventInfo};
 class DisplayEventList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: 'Test@test.com',
+            password: '123456',
+            error: '',
+            loading: false,
+            token: '',
+            name: "Welcome to Bored on Campus",
+        };
+    }
+
+    async logInFB() {
+        const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('1909001722724225', {
+            permissions: ['public_profile'],
+        });
+        if (type === 'success') {
+            // Get the user's name using Facebook's Graph API
+            const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+                this.setState({
+                    token: {token},
+                    name: `Hi ${(await response.json()).name}!`
+                });
+                // const responseInfoCallback = (error, result) => {
+                //     if (error) {
+                //         console.log(error)
+                //         alert('Error fetching data: ' + error.toString());
+                //     } else {
+                //         console.log(result)
+                //         alert('Success fetching data: ' + result.toString());
+                //     }
+                // };
+                //
+                // const infoRequest = new GraphRequest(
+                //     '/me',
+                //     {
+                //         accessToken: {token},
+                //         parameters: {
+                //             fields: {
+                //                 string: 'email,name,first_name,middle_name,last_name'
+                //             }
+                //         }
+                //     },
+                //     responseInfoCallback
+                // );
+
+                // Start the graph request.
+                // new GraphRequestManager().addRequest(infoRequest).start();
+
+        // })
+                console.log(this.state.token)
+        }
+    }
 
 
     render() {
-        console.log(this.props.navigation)
+        // console.log(this.props.navigation)
         return (
-        <View>
-        <Header backgroundColor="#49BEAA"
-        centerComponent={{ text: 'Hey h@ck0Rz'}}
-        rightComponent={{icon: 'home', color: '#fff'}}
-        />
-        <Text style={ styles.mainTitle }>Events Near You</Text>
-        <Divider style={ styles.sectionDivider } />
-        <EventList eventInfo={eventInfo} navigation={this.props.navigation}/>
-        </View> );
+            <View>
+            <View>
+                <Header backgroundColor="#49BEAA"
+                        placement="left"
+                        leftComponent={{ icon: 'home-account', onPress: this.logInFB.bind(this) }}
+                        centerComponent={{text: this.state.name, width:500}}
+                        rightComponent={{icon: 'home', color: '#fff'}}
+                />
+                <Text style={{fontSize: 34, fontWeight: "600", marginLeft: 20, marginTop: 12}}>Events
+                    Near You</Text>
+                <Divider style={{backgroundColor: '#D3D3D3', width: '80%', height: 3, marginBottom: 10}}/>
+                <EventList/>
+            </View>
+            <View>
+            <Text style={ styles.mainTitle }>Events Near You</Text>
+            <Divider style={ styles.sectionDivider } />
+            <EventList navigation={this.props.navigation}/>
+            </View>
+            </View>
+            );
     }
 }
 
@@ -161,10 +226,12 @@ const HomeStack = createStackNavigator(
         Home: EventList,
         Details: EventDetail,
         Display: DisplayEventList,
+        // FBApi: FacebookApiRetrieval,
     },
     {
         initialRouteName: 'Display',
-    }
+        headerMode: "none",
+    },
 );
 
 const SettingsStack = createStackNavigator({
