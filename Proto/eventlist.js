@@ -152,7 +152,7 @@ export default class EventList extends Component {
     }
 
     shareMessage(event) {
-        msg = "You know where it's at! Come to " + event.key + " at " + event.location + " on " + event.date + " " + event.time + "! You're the only friend I have :'( ...";
+        msg = "You know where it's at! Come to " + event.key + " at " + event.location + " on " + event.date + " " + event.time + "! You're the only friend I have :'(";
         Share.share({
             message: msg,
             url: undefined,
