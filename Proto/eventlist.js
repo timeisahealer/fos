@@ -251,24 +251,10 @@ export default class EventList extends Component {
                                     {item.date + "        " + item.time + "       " + item.cheers + " Cheers"}
                                 </Text>
                             </View>
-                        </View>
-                        <View style={styles.eventTitle}>
-                            <Text style={{fontSize:20, fontWeight:"bold", fontFamily:"Helvetica"}}>
-                                {item.key}
-                            </Text>
-                        </View>
-                        <View style={styles.eventDetails}>
-                            <Text style={{color: "#5F6A6A", fontFamily:"Helvetica", fontSize:12, fontWeight:"500"}}>
-                                {item.location}
-                            </Text>
-                            <Text style={{color: "#5F6A6A", fontFamily:"Helvetica", fontSize:11,}}>
-                                {item.date + "        " + item.time}
-                            </Text>
-                        </View>
                     </Card>
-                }
-            />
-        </View>
+                    </TouchableOpacity> }
+                />
+            </View>
         );
     }
 }

@@ -67,27 +67,30 @@ class DisplayEventList extends React.Component {
         // console.log(this.props.navigation)
         return (
             <View>
+            <View>
                 <Header backgroundColor="#49BEAA"
                         centerComponent={{text: 'Hey h@ck0Rz'}}
                         rightComponent={{icon: 'home', color: '#fff'}}
                 />
                 <Button onPress={this.logInFB.bind(this)} title='FB Sign in'/>
-                <Text style={{fontSize: 34, fontFamily: "Helvetica", fontWeight: "600", marginLeft: 20, marginTop: 12}}>Events
+                <Text style={{fontSize: 34, fontWeight: "600", marginLeft: 20, marginTop: 12}}>Events
                     Near You</Text>
                 <Divider style={{backgroundColor: '#D3D3D3', width: '80%', height: 3, marginBottom: 10}}/>
                 <EventList/>
-            </View>);
-        <View>
-        <Header
-        statusBarProps={{ barStyle: 'light-content' }}
-        backgroundColor="#49BEAA"
-        centerComponent={{ text: 'Hey h@ck0Rz'}}
-        rightComponent={{icon: 'home', color: '#fff'}}
-        />
-        <Text style={ styles.mainTitle }>Events Near You</Text>
-        <Divider style={ styles.sectionDivider } />
-        <EventList navigation={this.props.navigation}/>
-        </View> );
+            </View>
+            <View>
+            <Header
+            statusBarProps={{ barStyle: 'light-content' }}
+            backgroundColor="#49BEAA"
+            centerComponent={{ text: 'Hey h@ck0Rz'}}
+            rightComponent={{icon: 'home', color: '#fff'}}
+            />
+            <Text style={ styles.mainTitle }>Events Near You</Text>
+            <Divider style={ styles.sectionDivider } />
+            <EventList navigation={this.props.navigation}/>
+            </View>
+            </View>
+            );
     }
 }
 export default class App extends React.Component {
