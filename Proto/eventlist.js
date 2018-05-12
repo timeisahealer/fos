@@ -203,8 +203,8 @@ export default class EventList extends Component {
                     key={currTag}
                     onPress={() => this.toggleTag(this.state.allTags[i])}
                     // style={}
-                    buttonStyle={styles.filterButton,this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
-                    title='VIEW NOW'
+                    titleStyle={{ fontSize: 6 }}
+                    buttonStyle={styles.filterButton, this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
                     title={currTag}/>
             )
         }
@@ -251,21 +251,30 @@ export default class EventList extends Component {
                                     {item.date + "        " + item.time + "       " + item.cheers + " Cheers"}
                                 </Text>
                             </View>
-                        </Card>
-                        </TouchableOpacity>
-                    }
-                />
-            </View>
+                        </View>
+                        <View style={styles.eventTitle}>
+                            <Text style={{fontSize:20, fontWeight:"bold", fontFamily:"Helvetica"}}>
+                                {item.key}
+                            </Text>
+                        </View>
+                        <View style={styles.eventDetails}>
+                            <Text style={{color: "#5F6A6A", fontFamily:"Helvetica", fontSize:12, fontWeight:"500"}}>
+                                {item.location}
+                            </Text>
+                            <Text style={{color: "#5F6A6A", fontFamily:"Helvetica", fontSize:11,}}>
+                                {item.date + "        " + item.time}
+                            </Text>
+                        </View>
+                    </Card>
+                }
+            />
+        </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     filterButton: {
-        borderRadius: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: 0,
     },
     filterTagRow: {
         flexDirection: 'row',
@@ -297,8 +306,10 @@ const styles = StyleSheet.create({
     },
     pressed: {
         backgroundColor: 'steelblue',
+        borderRadius: 15,
     },
     notPressed: {
         backgroundColor: 'powderblue',
+        borderRadius: 15,
     },
 });
