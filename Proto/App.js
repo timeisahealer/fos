@@ -72,7 +72,7 @@ class DisplayEventList extends React.Component {
             <View>
                 <Header backgroundColor="#49BEAA"
                         placement="left"
-                        leftComponent={{ icon: 'facebook-square', onPress: this.logInFB.bind(this) }}
+                        leftComponent={{ icon: 'home-account', onPress: this.logInFB.bind(this) }}
                         centerComponent={{text: this.state.name, width:500}}
                         rightComponent={{icon: 'home', color: '#fff'}}
                 />
