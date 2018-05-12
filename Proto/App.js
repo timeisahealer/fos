@@ -43,7 +43,7 @@ const RootStack = createStackNavigator(
 const styles = StyleSheet.create({
     mainTitle: {
         fontSize:34, 
-        fontFamily: "Avenir", 
+//        fontFamily: "Avenir",
         fontWeight:"600", 
         marginLeft:20, 
         marginTop:12,
@@ -54,13 +54,6 @@ const styles = StyleSheet.create({
         height: 3, 
         marginBottom: 10
     },
-    map: {
-        width: '100%',
-        height: 500,
-        bottom: 0,
-        left: 0,
-        right: 0
-     },
     buttonText: {
         fontWeight: 'bold',
         fontSize: 30,
