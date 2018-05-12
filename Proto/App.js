@@ -12,6 +12,95 @@ import {
   createStackNavigator,
 } from 'react-navigation';
 
+const eventInfo = {
+    events: [
+                {
+                    key:"CSE Barbe",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "12:00-02:00pm",
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"Phil' Concert",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "02:00-04:00pm",
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"MedRevue",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "08:00-10:00pm",
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"DogSoc We Dogs",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "12:00-02:00pm",
+                    tag: ["outside"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+                {
+                    key:"Tea and Coffee @ Colombo",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "02:00-04:00pm",
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                  cheers: 0
+                },
+                {
+                    key:"Hackathon",
+                    description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
+                    location: "John Lions Garden",
+                    date: "19-04-2018",
+                    time: "08:00-10:00pm",
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
+                    cheers: 0
+                },
+            ],
+            food: false,
+            social: false,
+            outside: false,
+            allTags: ["food", "social", "outside"]
+ }
+
+export {eventInfo};
+
 class DisplayEventList extends React.Component {
     constructor(props) {
         super(props);
@@ -146,7 +235,7 @@ const HomeStack = createStackNavigator(
 );
 
 const SettingsStack = createStackNavigator({
-  Home: ViewMap,
+  Home: ViewMap ,
 });
 
 export default createBottomTabNavigator(
@@ -156,7 +245,7 @@ export default createBottomTabNavigator(
   },
   {
     /* Other configuration remains unchanged */
-  }
+  },
 );
 const styles = StyleSheet.create({
     mainTitle: {
