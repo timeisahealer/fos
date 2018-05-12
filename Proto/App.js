@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import { List, ListItems, Card, Button,Icon, Avatar, Header, Divider } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import EventList from './eventlist';
 import EventDetail from './eventdetail';
+import Geolocation from './geolocation';
 
 class DisplayEventList extends React.Component {
     render() {
+        console.log(this.props.navigation)
         return (
         <View>
         <Header backgroundColor="#49BEAA"
@@ -15,7 +18,7 @@ class DisplayEventList extends React.Component {
         />
         <Text style={ styles.mainTitle }>Events Near You</Text>
         <Divider style={ styles.sectionDivider } />
-        <EventList />
+        <EventList navigation={this.props.navigation}/>
         </View> );
     }
 }
@@ -50,5 +53,16 @@ const styles = StyleSheet.create({
         width:'80%', 
         height: 3, 
         marginBottom: 10
+    },
+    map: {
+        width: '100%',
+        height: 500,
+        bottom: 0,
+        left: 0,
+        right: 0
+     },
+    buttonText: {
+        fontWeight: 'bold',
+        fontSize: 30,
     },
 });

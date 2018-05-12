@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import { Linking, Platform, StyleSheet, Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
-
+import RootStack from './App'
 export default class EventList extends Component {
     constructor(props){
         super(props);
@@ -13,7 +13,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "12:00-02:00pm",
-                    tag: ["food"]
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Phil' Concert",
@@ -21,7 +25,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "02:00-04:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"MedRevue",
@@ -29,7 +37,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "08:00-10:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"DogSoc We Dogs",
@@ -37,7 +49,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "12:00-02:00pm",
-                    tag: ["outside"]
+                    tag: ["outside"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Tea and Coffee @ Colombo",
@@ -45,7 +61,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "02:00-04:00pm",
-                    tag: ["food"]
+                    tag: ["food"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
                 {
                     key:"Hackathon",
@@ -53,7 +73,11 @@ export default class EventList extends Component {
                     location: "John Lions Garden",
                     date: "19-04-2018",
                     time: "08:00-10:00pm",
-                    tag: ["social"]
+                    tag: ["social"],
+                    latlng: {
+                        latitude: -33.8701062,
+                        longitude: 151.2076937,
+                    },
                 },
             ],
             food: false,
@@ -116,6 +140,14 @@ export default class EventList extends Component {
         return data;
 
     }
+    mapsRedirection(latlng){
+
+//        const url = 'http://maps.apple.com/?daddr=' + latlng.latitude + ',' + latlng.longitude;
+//        Linking.openURL(url);
+        const url = "https://www.google.com/maps/dir/?api=1&destination=" + latlng.latitude + ',' + latlng.longitude;
+
+        Linking.openURL(url);
+    }
     render() {
         console.log("rerendered");
         var data = this.filterAllTags(this.state.events);
@@ -147,6 +179,7 @@ export default class EventList extends Component {
                 <FlatList
                     data={data}
                     renderItem= { ({item}) =>
+                        <TouchableOpacity onPress={() => this.props.navigation.push("Details", { event: item, })}>
                         <Card>
                             <View style={ styles.actionRow }>
                                 <View>
