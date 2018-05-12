@@ -209,6 +209,7 @@ export default class EventList extends Component {
                                 </Text>
                             </View>
                         </Card>
+                        </TouchableOpacity>
                     }
                 />
             </View>
@@ -218,37 +219,37 @@ export default class EventList extends Component {
 
 const styles = StyleSheet.create({
     filterButton: {
-        borderRadius: 0, 
-        marginLeft: 0, 
-        marginRight: 0, 
+        borderRadius: 0,
+        marginLeft: 0,
+        marginRight: 0,
         marginBottom: 0,
     },
     filterTagRow: {
-        flexDirection: 'row', 
+        flexDirection: 'row',
         margin: 10,
     },
     actionRow: {
-        flexDirection:"row", 
-        justifyContent:"space-between", 
+        flexDirection:"row",
+        justifyContent:"space-between",
         marginBottom:10,
     },
     actionButtons: {
         flexDirection:"row",
     },
     eventTitle: {
-        fontSize:20, 
-        fontWeight:"bold", 
+        fontSize:20,
+        fontWeight:"bold",
         fontFamily:"Avenir",
     },
     eventLocation: {
-        color: "#5F6A6A", 
-        fontFamily:"Avenir", 
-        fontSize:12, 
+        color: "#5F6A6A",
+        fontFamily:"Avenir",
+        fontSize:12,
         fontWeight:"500",
     },
     eventDatetime: {
-        color: "#5F6A6A", 
-        fontFamily:"Avenir", 
+        color: "#5F6A6A",
+        fontFamily:"Avenir",
         fontSize:11,
     },
     pressed: {

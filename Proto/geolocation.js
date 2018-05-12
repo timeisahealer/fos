@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
-
-class Geolocation extends Component {
+import styles from './App'
+export default class Geolocation extends Component {
   constructor(props) {
     super(props);
 
@@ -44,13 +44,13 @@ class Geolocation extends Component {
   render() {
     return (
       <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text></Text>
             <MapView style={styles.map}
                     showsUserLocation={ true }
                     region={ this.state.region }
                     onRegionChange={ region => this.setState({region}) }
                     onRegionChangeComplete={ region => this.setState({region}) }
             >
+              {console.log(this.props)}
             <Marker
               coordinate={this.props.event.latlng}
 //              {{
