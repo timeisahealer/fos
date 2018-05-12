@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { Linking, Platform, StyleSheet, Text, View, FlatList, ScrollView, TouchableHighlight, TouchableOpacity, Share } from 'react-native';
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
 import RootStack from './App'
+
+
+
 export default class EventList extends Component {
     constructor(props){
         super(props);
         this.state = {
             events: [
                 {
-                    key:"CSE Barbeque",
+                    key:"CSE Barbe",
                     description: "Weekly Barbeque with the nice CSE Peeps YEAYAH",
                     location: "John Lions Garden",
                     date: "19-04-2018",
@@ -90,6 +93,16 @@ export default class EventList extends Component {
             outside: false,
             allTags: ["food", "social", "outside"]
         };
+    }
+
+    f = function(s) {
+        for (var i = 0; i < this.state.length; i++) {
+            if (this.state[i].key === s) {
+                state[i].cheers = state[i].cheers + 1
+                console.log(state[i].cheers)
+            }
+        }
+        return 1;
     }
 
     toggleTag(tag) {
@@ -196,6 +209,8 @@ export default class EventList extends Component {
             )
         }
 
+
+
         return (
             <View>
                 <View style={ styles.filterTagRow }>
@@ -216,7 +231,7 @@ export default class EventList extends Component {
                                         activeOpacity={0.7} />
                                 </View>
                                 <View style={ styles.actionButtons }>
-                                    <Icon reverse color="#49BEAA" size={13} name='thumb-up' onPress={() => item.cheers = item.cheers + 1 }/>
+                                    <Icon reverse color="#49BEAA" size={13} name='thumb-up' onPress={() => 1}/>
                                     <Icon reverse color="#49BEAA" size={13} name='near-me' onPress={() => this.mapsRedirection(item.latlng)} />
                                     <Icon reverse color="#49BEAA" size={13} name='share' onPress={() => this.shareMessage(item)} />
                                 </View>
