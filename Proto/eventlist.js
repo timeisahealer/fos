@@ -18,6 +18,7 @@ export default class EventList extends Component {
                         latitude: -33.8701062,
                         longitude: 151.2076937,
                     },
+                    cheers: 0
                 },
                 {
                     key:"Phil' Concert",
@@ -30,6 +31,7 @@ export default class EventList extends Component {
                         latitude: -33.8701062,
                         longitude: 151.2076937,
                     },
+                    cheers: 0
                 },
                 {
                     key:"MedRevue",
@@ -42,6 +44,7 @@ export default class EventList extends Component {
                         latitude: -33.8701062,
                         longitude: 151.2076937,
                     },
+                    cheers: 0
                 },
                 {
                     key:"DogSoc We Dogs",
@@ -54,6 +57,7 @@ export default class EventList extends Component {
                         latitude: -33.8701062,
                         longitude: 151.2076937,
                     },
+                    cheers: 0
                 },
                 {
                     key:"Tea and Coffee @ Colombo",
@@ -78,6 +82,7 @@ export default class EventList extends Component {
                         latitude: -33.8701062,
                         longitude: 151.2076937,
                     },
+                    cheers: 0
                 },
             ],
             food: false,
@@ -157,7 +162,7 @@ export default class EventList extends Component {
             message: msg,
             url: undefined,
             title: 'SOS: Lonely Person Needs Friends!'
-        }, 
+        },
         {
             // Android only:
             dialogTitle: 'SOS: Lonely Person Needs Friends!',
@@ -211,7 +216,8 @@ export default class EventList extends Component {
                                         activeOpacity={0.7} />
                                 </View>
                                 <View style={ styles.actionButtons }>
-                                    <Icon reverse color="#49BEAA" size={13} name='near-me' />
+                                    <Icon reverse color="#49BEAA" size={13} name='thumb-up' onPress={() => item.cheers = item.cheers + 1 }/>
+                                    <Icon reverse color="#49BEAA" size={13} name='near-me' onPress={() => this.mapsRedirection(item.latlng)} />
                                     <Icon reverse color="#49BEAA" size={13} name='share' onPress={() => this.shareMessage(item)} />
                                 </View>
                             </View>
@@ -220,12 +226,14 @@ export default class EventList extends Component {
                                     {item.key}
                                 </Text>
                             </View>
-                            <View>
+                            <View style={{flexDirection:"row"}}>
                                 <Text style={styles.eventLocation}>
                                     {item.location}
                                 </Text>
+                            </View>
+                            <View style={{flexDirection:"row"}}>
                                 <Text style={styles.eventDatetime}>
-                                    {item.date + "        " + item.time}
+                                    {item.date + "        " + item.time + "       " + item.cheers + " Cheers"}
                                 </Text>
                             </View>
                         </Card>
