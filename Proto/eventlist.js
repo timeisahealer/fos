@@ -185,8 +185,8 @@ export default class EventList extends Component {
                     key={currTag}
                     onPress={() => this.toggleTag(this.state.allTags[i])}
                     // style={}
-                    buttonStyle={styles.filterButton,this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
-                    title='VIEW NOW'
+                    titleStyle={{ fontSize: 6 }}
+                    buttonStyle={styles.filterButton, this.state[this.state.allTags[i]] ? styles.pressed : styles.notPressed}
                     title={currTag}/>
             )
         }
@@ -239,10 +239,6 @@ export default class EventList extends Component {
 
 const styles = StyleSheet.create({
     filterButton: {
-        borderRadius: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: 0,
     },
     filterTagRow: {
         flexDirection: 'row',
@@ -274,8 +270,10 @@ const styles = StyleSheet.create({
     },
     pressed: {
         backgroundColor: 'steelblue',
+        borderRadius: 15,
     },
     notPressed: {
         backgroundColor: 'powderblue',
+        borderRadius: 15,
     },
 });

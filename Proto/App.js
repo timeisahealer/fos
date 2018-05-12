@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Text, FlatList,ScrollView} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { List, ListItems, Card, Button,Icon, Avatar, Header, Divider } from 'react-native-elements';
+import { List, ListItems, Card, Button, Icon, Avatar, Header, Divider } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'; // Version can be specified in package.json
 import EventList from './eventlist';
 import EventDetail from './eventdetail';
@@ -9,10 +9,12 @@ import Geolocation from './geolocation';
 
 class DisplayEventList extends React.Component {
     render() {
-        console.log(this.props.navigation)
+        // console.log(this.props.navigation)
         return (
         <View>
-        <Header backgroundColor="#49BEAA"
+        <Header
+        statusBarProps={{ barStyle: 'light-content' }}
+        backgroundColor="#49BEAA"
         centerComponent={{ text: 'Hey h@ck0Rz'}}
         rightComponent={{icon: 'home', color: '#fff'}}
         />
@@ -37,7 +39,8 @@ const RootStack = createStackNavigator(
     },
     {
         initialRouteName: 'Display',
-    }
+        headerMode: "none",
+    },
 );
 
 const styles = StyleSheet.create({
