@@ -239,17 +239,17 @@ const styles = StyleSheet.create({
     eventTitle: {
         fontSize:20,
         fontWeight:"bold",
-        fontFamily:"Avenir",
+        //fontFamily:"Avenir",
     },
     eventLocation: {
         color: "#5F6A6A",
-        fontFamily:"Avenir",
+        //fontFamily:"Avenir",
         fontSize:12,
         fontWeight:"500",
     },
     eventDatetime: {
         color: "#5F6A6A",
-        fontFamily:"Avenir",
+        //fontFamily:"Avenir",
         fontSize:11,
     },
     pressed: {
